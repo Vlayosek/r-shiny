@@ -1,0 +1,48 @@
+# INSTALACION Y CARGA DE PAQUETES ---------------------------------------------
+
+## INSTALACIÓN DE PAQUETES
+install.packages("tidyverse")
+install.packages("readxl")
+install.packages("openxlsx")
+install.packages("lubridate")
+install.packages("magrittr")
+
+## CARGA DE PAQUETES
+library(tidyverse)
+library(readxl)
+library(openxlsx)
+library(magrittr)
+library(readr)
+
+# IMPORTACION DE DATA ---------------------------------------------------------
+# Cargo mi DS que es sobre un listado de ciudades y su densidad
+density_2022 <- read_delim("data/ListOfCitiesForDensity11.csv", 
+                          delim = ",")
+
+## Limpio mi Ds ya que la primera columna esta vacia
+densidadCityDs <- density_2022[-1,]
+
+## Creo un nuevo archivo como respaldo del ds cargado previamente
+densidadCityDs2 <- write.xlsx(densidadCityDs,
+                        "data/densidadCityDs2.xlsx")
+
+## CARGO MAS DS para cualquier emergencia
+#contenedor20223t <- read_excel("data/apg_contededor20p20223t.xlsx")
+#toneladasImpXAgencia <- read_excel("data/apg_tonimpexpagencias20223t.xlsx")
+#trasnAreo20223t <- read_delim("data/dgac_transporteaereo_2022octubre.csv", 
+#                           delim = ",")
+
+#rm(contenedor20223t)
+
+#
+view(densidadCityDs)
+
+densidadCityDs2 <- densidadCityDs2 %>% rename(Rank=PUESTO,
+                            City=CIUDAD,
+                            Population=POBLACION,
+                            `Area KM2`=AREA_X_KM2,
+                            `Area   M2`=AREA_X_M2,
+                            `Density KM2`=DENSIDAD_X_KM2,
+                            `Density  M2`=DENSIDAD-X_M2,
+                            Country=PAIS,
+                            Year=ANIO)
