@@ -26,6 +26,8 @@ densidadCityDs <- density_2022[-1,]
 densidadCityDs2 <- write.xlsx(densidadCityDs,
                         "data/densidadCityDs2.xlsx")
 
+densidadCityDs2 <- read_xlsx("data/densidadCityDs2.xlsx")
+
 ## CARGO MAS DS para cualquier emergencia
 #contenedor20223t <- read_excel("data/apg_contededor20p20223t.xlsx")
 #toneladasImpXAgencia <- read_excel("data/apg_tonimpexpagencias20223t.xlsx")
