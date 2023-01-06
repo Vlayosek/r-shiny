@@ -36,15 +36,18 @@ densidadCityDs2 <- read_xlsx("data/densidadCityDs2.xlsx")
 
 #rm(contenedor20223t)
 
-#
+# ver el objeto ds
 view(densidadCityDs)
 
-densidadCityDs2 <- densidadCityDs2 %>% rename(Rank=PUESTO,
-                            City=CIUDAD,
-                            Population=POBLACION,
-                            `Area KM2`=AREA_X_KM2,
-                            `Area   M2`=AREA_X_M2,
-                            `Density KM2`=DENSIDAD_X_KM2,
-                            `Density  M2`=DENSIDAD-X_M2,
-                            Country=PAIS,
-                            Year=ANIO)
+## Cambio nombre a las columnas de ingles a español
+densidadCityDs <- densidadCityDs %>% rename(PUESTO=Rank,
+                                            CIUDAD=City,
+                            POBLACION=Population,
+                            AREA_X_KM2=`Area KM2`,
+                           AREA_X_M2= `Area   M2`,
+                            DENSIDAD_X_KM2=`Density KM2`,
+                            DENSIDAD_X_M2=`Density  M2`,
+                            PAIS=Country,
+                           ANIO=Year)
+
+colnames(densidadCityDs)
