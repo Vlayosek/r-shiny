@@ -50,4 +50,4 @@ densidadCityDs <- densidadCityDs %>% rename(PUESTO=Rank,
                             PAIS=Country,
                            ANIO=Year)
 
-
+colnames(densidadCityDs)
