@@ -6,6 +6,7 @@ install.packages("readxl")
 install.packages("openxlsx")
 install.packages("lubridate")
 install.packages("magrittr")
+install.packages("dplyr")
 
 ## CARGA DE PAQUETES
 library(tidyverse)
@@ -13,6 +14,8 @@ library(readxl)
 library(openxlsx)
 library(magrittr)
 library(readr)
+library(stringr)
+library(dplyr)
 
 # IMPORTACION DE DATA ---------------------------------------------------------
 # Cargo mi DS que es sobre un listado de ciudades y su densidad
@@ -50,4 +53,16 @@ densidadCityDs <- densidadCityDs %>% rename(PUESTO=Rank,
                             PAIS=Country,
                            ANIO=Year)
 
-colnames(densidadCityDs)
+## Selecciono los campos mas relevantes
+
+densidadCityDs <- densidadCityDs %>% 
+  select(PUESTO,CIUDAD,POBLACION,AREA_X_KM2,DENSIDAD_X_KM2,PAIS,ANIO)
+
+densidad_2022_backup$PAIS <- as.character(densidad_2022_backup$PAIS)
+
+## Elimino tambien la columna ANIO
+densidad_2022_backup <- select(densidad_2022_backup, -ANIO)
+
+#Deliminara las transacciones cuya Area x Km sea diferente de cero
+densidad_2022_backup <- densidad_2022_backup %>% 
+  filter(AREA_X_KM2 != 0)
