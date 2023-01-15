@@ -7,6 +7,9 @@ install.packages("openxlsx")
 install.packages("lubridate")
 install.packages("magrittr")
 install.packages("dplyr")
+install.packages("modeest")
+install.packages("fdth")
+
 
 ## CARGA DE PAQUETES
 library(tidyverse)
@@ -16,6 +19,9 @@ library(magrittr)
 library(readr)
 library(stringr)
 library(dplyr)
+library(modeest)
+library(fdth)
+
 
 # IMPORTACION DE DATA ---------------------------------------------------------
 # Cargo mi DS que es sobre un listado de ciudades y su densidad
@@ -66,3 +72,6 @@ densidad_2022_backup <- select(densidad_2022_backup, -ANIO)
 #Deliminara las transacciones cuya Area x Km sea diferente de cero
 densidad_2022_backup <- densidad_2022_backup %>% 
   filter(AREA_X_KM2 != 0)
+
+
+rm(encuesta,encuesta2,ventas, ventas_2022)
